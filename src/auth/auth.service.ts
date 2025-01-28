@@ -24,7 +24,7 @@ export class AuthService {
             throw new BadRequestException('E-mail ou Senha inválidos.');
         }
 
-        const payload = { sub: user.id, uusername: user.email };
+        const payload = { sub: user.id, username: user.email };
 
         return {
             access_token: await this.jwtService.signAsync(payload),
