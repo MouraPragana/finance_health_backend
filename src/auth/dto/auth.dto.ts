@@ -1,10 +1,15 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-import { IsEmail, IsString } from 'class-validator';
+import { IsEmail, IsStrongPassword } from 'class-validator';
 
 export class AuthDto {
-  @IsEmail()
-  email: string;
+    @IsEmail()
+    email: string;
 
-  @IsString()
-  password: string;
+    @IsStrongPassword({
+        minLength: 8,
+        minLowercase: 1,
+        minNumbers: 1,
+        minSymbols: 1,
+        minUppercase: 1,
+    })
+    password: string;
 }
